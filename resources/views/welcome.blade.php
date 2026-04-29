@@ -24,18 +24,24 @@
     </nav>
 
     <main class="flex-1 container mx-auto px-4 py-8">
+    <x-layout>
+        <x-slot:title>
+            welcome
+</x-slot:title>    
         <div class="max-w-2xl mx-auto">
+            @foreach ($chirps as $chirp)
             <div class="card bg-base-100 shadow mt-8">
                 <div class="card-body">
                     <div>
-                        <h1 class="text-3xl font-bold">Welcome to Chirper!</h1>
-                        <p> This is your brand new Laravel application. Time to make it sing (or chirp)!</p>
-                        <p class ="mt-2 text-sm text-grey-600">Now this is live on the internet! 🎉</p>
-                        
+                        <div class="font-semibold">{{ $chirp['author'] }}</div>
+                        <div class="mt-1"> {{ $chirp['message'] }} </div>
+                        <div class ="text-sm text-grey-600 mt-2">{{ $chirp['time'] }}</div> 
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
+</x-layout>   
     </main>
 
     <footer class="footer footer-center p-5 bg-base-300 text-base-content text-xs">
